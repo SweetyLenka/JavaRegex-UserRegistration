@@ -63,17 +63,37 @@ public class UserRegistration {
 				System.out.println(emailID+" is not a valid Email Id");
 				validateEmail();
 			}
-			
 		}
+		public static void mobilevalidation()
+		{
+			System.out.println("*******MOBILE NUMBER*******\n * Mobile Format - Country code follow by space and 10 digit number\n");
+			System.out.println("Enter a valid MOBILE NUMBER :");
+			
+			Scanner sc = new Scanner(System.in);
+			String mobile=sc.nextLine();
+			String regexmobile = "[9]{1}[1]{1}[0-9]{10}";
+			boolean mobileValidator = mobile.matches(regexmobile);
+			if(mobileValidator)
+			{
+				System.out.println(mobile+" is a valid Mobile Number");
+			}
+			else
+			{
+				System.out.println(mobile+" is not a valid Mobile Number");
+				mobilevalidation();
+			}
+		}
+		
 		
 	
 	
 	public static void main(String args[]) {
 		System.out.println("WELCOME TO USER REGISTRATION VALIDATION");
 		UserRegistration userreg = new UserRegistration();
-		userreg.validateFirstName();
-		userreg.validateLastName();
-		userreg.validateEmail();
+//		userreg.validateFirstName();
+//		userreg.validateLastName();
+//		userreg.validateEmail();
+		mobilevalidation();
 		
 	}
 }
