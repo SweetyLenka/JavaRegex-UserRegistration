@@ -35,8 +35,8 @@ public class UserRegistration {
 		Scanner sc = new Scanner(System.in);
 		String lastName=sc.nextLine();
 		String regexlastName = "[A-Z]{1}[a-z]{2,}";
-		boolean firstNameValidator = lastName.matches(regexlastName);
-		if(firstNameValidator)
+		boolean lastNameValidator = lastName.matches(regexlastName);
+		if(lastNameValidator)
 		{
 			System.out.println(lastName+" is a valid Last Name");
 		}
@@ -46,7 +46,25 @@ public class UserRegistration {
 			validateLastName();
 		}
 	}
-		
+		public static void validateEmail() {
+			System.out.println("*******EMAIL ID *******\n Email has 3 mandatory parts (abc, bl\r\n precise @ and . positions )\n");
+			System.out.println("Enter a valid EMAIL-ID :");
+			
+			Scanner sc = new Scanner(System.in);
+			String emailID=sc.nextLine();
+			String regexemailId = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+			boolean emailIdValidator = emailID.matches(regexemailId);
+			if(emailIdValidator)
+			{
+				System.out.println(emailID+" is a valid Email Id");
+			}
+			else
+			{
+				System.out.println(emailID+" is not a valid Email Id");
+				validateEmail();
+			}
+			
+		}
 		
 	
 	
@@ -55,6 +73,7 @@ public class UserRegistration {
 		UserRegistration userreg = new UserRegistration();
 		userreg.validateFirstName();
 		userreg.validateLastName();
+		userreg.validateEmail();
 		
 	}
 }
