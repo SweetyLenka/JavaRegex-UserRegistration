@@ -83,17 +83,34 @@ public class UserRegistration {
 				mobilevalidation();
 			}
 		}
+		public static void passwordValidation()
+		{
+			System.out.println("*******PASSWORD*******\n RULE-1 : Minimum 8 Characters \n RULE-2 : Should have at least Upper Case \n RULE-3 : Should have at least 1 numeric number in the password  the password \n RULE-4 : Has exactly 1 Special Character\n" );
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter a valid Password : ");
+			String password = sc.nextLine();
+			String regexPassword = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z0-9$&+,:;=?@#|'<>.^*()%!-]{8,}$";
+			boolean passwordValidator = password.matches(regexPassword);
+			if(passwordValidator)
+			{
+				System.out.println(password+" is a valid Password \n*****ALL RULES ARE PASSED*****\n");
+			}
+			else
+			{
+				System.out.println(password+" is not a valid Password");
+				passwordValidation();
+			}
+		}
 		
-		
-	
 	
 	public static void main(String args[]) {
 		System.out.println("WELCOME TO USER REGISTRATION VALIDATION");
-		UserRegistration userreg = new UserRegistration();
-//		userreg.validateFirstName();
-//		userreg.validateLastName();
-//		userreg.validateEmail();
+		UserRegistration userreg = new UserRegistration();		
+		userreg.validateFirstName();
+		userreg.validateLastName();
+		userreg.validateEmail();
 		mobilevalidation();
+		passwordValidation();
 		
 	}
 }
