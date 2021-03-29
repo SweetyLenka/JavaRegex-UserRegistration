@@ -53,6 +53,7 @@ public class UserRegistration {
 			Scanner sc = new Scanner(System.in);
 			String emailID=sc.nextLine();
 			String regexemailId = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+			
 			boolean emailIdValidator = emailID.matches(regexemailId);
 			if(emailIdValidator)
 			{
@@ -101,6 +102,24 @@ public class UserRegistration {
 				passwordValidation();
 			}
 		}
+		public static void validateEmailSamples()
+		{
+			System.out.println("Enter a valid EMAIL-ID :");
+			Scanner sc = new Scanner(System.in);
+			String emailID=sc.nextLine();
+			String regexemailId = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+){2,}$";
+			
+			boolean emailIdValidator = emailID.matches(regexemailId);
+			if(emailIdValidator)
+			{
+				System.out.println(emailID+" is a valid Email Id");
+			}
+			else
+			{
+				System.out.println(emailID+" is not a valid Email Id");
+				validateEmailSamples();
+			}
+		}
 		
 	
 	public static void main(String args[]) {
@@ -111,6 +130,8 @@ public class UserRegistration {
 		userreg.validateEmail();
 		mobilevalidation();
 		passwordValidation();
+		validateEmailSamples();
+		
 		
 	}
 }
